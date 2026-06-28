@@ -9,7 +9,7 @@ Nivaran lets citizens report local civic issues — potholes, garbage, broken st
 Built for the **Vibe2Skill Hackathon** — Problem Statement 2: *Community Hero — Hyperlocal Problem Solver*.
 
 > 📄 Full project description (problem statement, solution overview, features, tech stack): see the submitted Google Doc.
-> 🔗 Live app: [Insert deployed URL]
+> 🔗 Live app: [(https://nivaran-780549661666.asia-southeast1.run.app/)]
 
 ---
 
