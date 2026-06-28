@@ -1,0 +1,134 @@
+{
+  "entities": {
+    "CivicReport": {
+      "title": "CivicReport",
+      "description": "Represents a local civic issue reported by a resident",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The unique document ID of the incident report"
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who filed the report"
+        },
+        "userName": {
+          "type": "string",
+          "description": "The display name of the citizen reporter"
+        },
+        "userEmail": {
+          "type": "string",
+          "description": "The email address of the citizen reporter"
+        },
+        "photoUrl": {
+          "type": "string",
+          "description": "Base64 representing the incident photo evidence"
+        },
+        "description": {
+          "type": "string",
+          "description": "A description outlining detail about the civic incident"
+        },
+        "location": {
+          "type": "object",
+          "description": "Address and coordinate specifics of the logged incident"
+        },
+        "category": {
+          "type": "string",
+          "description": "The classified zone of the incident"
+        },
+        "severity": {
+          "type": "string",
+          "description": "Low, Medium, or High urgency prioritization"
+        },
+        "status": {
+          "type": "string",
+          "description": "reported, in progress, or resolved status"
+        },
+        "upvotes": {
+          "type": "number",
+          "description": "Total count of critical urgency priority votes"
+        },
+        "upvotedBy": {
+          "type": "array",
+          "description": "List of user UIDs who upvoted this incident"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "The timestamp of submission"
+        },
+        "aiSummary": {
+          "type": "string",
+          "description": "AI verified extraction tip analyzing incident details"
+        },
+        "aiDebugError": {
+          "type": "string",
+          "description": "Detailed error context for debugging analyzer calls"
+        },
+        "debugError": {
+          "type": "string",
+          "description": "Full raw Gemini error message and stack trace text"
+        }
+      }
+    },
+    "Verification": {
+      "title": "Verification",
+      "description": "Represents a user verification vote indicating whether a reported incident is still active or resolved",
+      "type": "object",
+      "properties": {
+        "issueId": {
+          "type": "string",
+          "description": "The document snapshot ID of the referenced report document"
+        },
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user casting the verification vote"
+        },
+        "vote": {
+          "type": "string",
+          "enum": ["still_active", "resolved"],
+          "description": "The status vote for the incident"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp indicating when the verification vote was logged"
+        }
+      },
+      "required": ["issueId", "userId", "vote", "createdAt"]
+    },
+    "CivicUser": {
+      "title": "CivicUser",
+      "description": "Represents a citizen's profile and accumulated civic points",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The unique user UID"
+        },
+        "userName": {
+          "type": "string",
+          "description": "The display name of the citizen user"
+        },
+        "points": {
+          "type": "number",
+          "description": "Total accumulated civic engagement points"
+        }
+      },
+      "required": ["userId", "userName", "points"]
+    }
+  },
+  "firestore": {
+    "reports/{reportId}": {
+      "schema": "CivicReport",
+      "description": "Incident reports collection tracking active civic matters"
+    },
+    "verifications/{verificationId}": {
+      "schema": "Verification",
+      "description": "User feedback checking if reported incidents are still active or resolved"
+    },
+    "users/{userId}": {
+      "schema": "CivicUser",
+      "description": "User profiles tracking engagement points"
+    }
+  }
+}

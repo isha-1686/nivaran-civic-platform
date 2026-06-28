@@ -1,0 +1,6 @@
+{
+  "name": "Nivaran",
+  "description": "Civic issue reporting platform for reporting potholes, garbage, broken streetlights, and water leaks with AI assistance and location capture.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
